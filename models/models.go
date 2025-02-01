@@ -8,6 +8,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"go-web-test/pkg/setting"
 	"log"
+	"time"
 )
 
 import (
@@ -67,4 +68,37 @@ func init() {
 // CloseDB 函数用于关闭数据库连接
 func CloseDB() {
 	defer db.Close() // 使用 defer 语句，确保在函数返回前关闭数据库连接
+}
+
+func ExistTagByName(name string) bool {
+	var tag Tag
+	db.Select("id").Where("name = ?", name).First(&tag)
+	if tag.ID > 0 {
+		return true
+	}
+
+	return false
+}
+
+func AddTag(name string, state int, createdBy string) bool {
+	db.Create(&Tag{
+		Name:      name,
+		State:     state,
+		CreatedBy: createdBy,
+	})
+
+	return true
+}
+
+// BeforeCreate 这两个是gorm提供的回调方法，用于在插入和更新数据前更新时间戳。如果回调错误，则回滚所有修改
+func (tag *Tag) BeforeCreate(scope *gorm.Scope) error {
+	scope.SetColumn("CreatedOn", time.Now().Unix())
+
+	return nil
+}
+
+func (tag *Tag) BeforeUpdate(scope *gorm.Scope) error {
+	scope.SetColumn("ModifiedOn", time.Now().Unix())
+
+	return nil
 }
