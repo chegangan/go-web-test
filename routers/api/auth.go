@@ -3,8 +3,8 @@ package api
 import (
 	"go-web-test/models"
 	"go-web-test/pkg/e"
+	"go-web-test/pkg/logging"
 	"go-web-test/pkg/util"
-	"log"
 	"net/http"
 
 	"github.com/astaxie/beego/validation"
@@ -43,7 +43,7 @@ func GetAuth(c *gin.Context) {
 		}
 	} else {
 		for _, err := range valid.Errors {
-			log.Println(err.Key, err.Message)
+			logging.Info(err.Key, err.Message)
 		}
 	}
 

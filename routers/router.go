@@ -20,6 +20,7 @@ func InitRouter() *gin.Engine {
 	r.GET("/auth", api.GetAuth)
 
 	apiv1 := r.Group("/api/v1")
+	//使用jwt令牌为了解决 api可以任意访问的问题
 	apiv1.Use(jwt.JWT())
 	{
 		//获取标签列表
