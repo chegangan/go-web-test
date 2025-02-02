@@ -2,23 +2,27 @@ module go-web-test
 
 go 1.23
 
-require github.com/gin-gonic/gin v1.10.0
+require (
+	github.com/astaxie/beego v1.12.3
+	github.com/gin-gonic/gin v1.10.0
+	github.com/go-ini/ini v1.67.0
+	github.com/jinzhu/gorm v1.9.16
+	github.com/unknwon/com v1.0.1
+)
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
-	github.com/astaxie/beego v1.12.3 // indirect
 	github.com/bytedance/sonic v1.12.8 // indirect
 	github.com/bytedance/sonic/loader v0.2.3 // indirect
 	github.com/cloudwego/base64x v0.1.5 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.8 // indirect
 	github.com/gin-contrib/sse v1.0.0 // indirect
-	github.com/go-ini/ini v1.67.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.24.0 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/goccy/go-json v0.10.5 // indirect
-	github.com/jinzhu/gorm v1.9.16 // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
@@ -30,7 +34,6 @@ require (
 	github.com/shiena/ansicolor v0.0.0-20230509054315-a9deabde6e02 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
-	github.com/unknwon/com v1.0.1 // indirect
 	golang.org/x/arch v0.13.0 // indirect
 	golang.org/x/crypto v0.32.0 // indirect
 	golang.org/x/net v0.34.0 // indirect
