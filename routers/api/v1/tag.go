@@ -11,7 +11,6 @@ import (
 	"net/http"
 )
 
-// 获取多个文章标签
 func GetTags(c *gin.Context) {
 	name := c.Query("name")
 
@@ -48,7 +47,8 @@ func GetTags(c *gin.Context) {
 */
 // @Param name query string true "Name"
 // @Param state query int false "State"
-// @Param created_by query int false "CreatedBy"
+// @Param created_by query string false "CreatedBy"
+// @Param token query string true "Token"
 // @Success 200 {string} json "{"code":200,"data":{},"msg":"ok"}"
 func AddTag(c *gin.Context) {
 	name := c.Query("name")
@@ -136,7 +136,6 @@ func EditTag(c *gin.Context) {
 	})
 }
 
-// 删除文章标签
 func DeleteTag(c *gin.Context) {
 	id := com.StrTo(c.Param("id")).MustInt()
 

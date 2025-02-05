@@ -17,8 +17,10 @@ import (
 // @title           go-web-test API
 // @version         0.5
 // @description     This is a simple test of go web server
-// @host      localhost:8000
-// @BasePath  /api/v1
+/**
+* @BasePath   routers/api/v1
+* @host      localhost:8000
+ */
 func main() {
 	// endless实现优雅的热重启
 	endless.DefaultReadTimeOut = setting.ReadTimeout
