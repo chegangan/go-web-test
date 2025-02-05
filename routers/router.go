@@ -21,6 +21,7 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(setting.RunMode)
 
 	r.GET("/auth", api.GetAuth)
+	//使用启动swag。在initrouter中添加swag的doc来启动swag。记得用swag init来生成或者更新docs文件夹
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiv1 := r.Group("/api/v1")
