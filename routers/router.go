@@ -2,6 +2,9 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/swaggo/files"       // swagger embed files
+	"github.com/swaggo/gin-swagger" // gin-swagger middleware
+	_ "go-web-test/docs"
 	jwt "go-web-test/middleware"
 	"go-web-test/pkg/setting"
 	"go-web-test/routers/api"
@@ -18,6 +21,7 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(setting.RunMode)
 
 	r.GET("/auth", api.GetAuth)
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiv1 := r.Group("/api/v1")
 	//使用jwt令牌为了解决 api可以任意访问的问题
