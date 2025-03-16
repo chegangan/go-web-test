@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/fvbock/endless"
 	"go-web-test/pkg/setting"
 	"go-web-test/routers"
 	"log"
@@ -10,8 +11,6 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-
-	"github.com/fvbock/endless"
 )
 
 // @title           go-web-test API

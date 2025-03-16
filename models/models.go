@@ -5,15 +5,16 @@ package models
 */
 import (
 	"fmt"
-	"github.com/jinzhu/gorm"
 	"go-web-test/pkg/setting"
 	"log"
 	"time"
+
+	"github.com/jinzhu/gorm"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
-import (
-	_ "github.com/jinzhu/gorm/dialects/mysql" // 导入 MySQL 驱动，并执行其 init 函数，注册驱动
-)
+// 导入 MySQL 驱动，并执行其 init 函数，注册驱动
 
 var db *gorm.DB // 定义一个全局变量 db，类型为 *gorm.DB，用于存储数据库连接
 
@@ -51,7 +52,7 @@ func init() {
 		dbName))
 
 	if err != nil {
-		log.Println(err) // 如果连接数据库失败，则记录错误日志
+		log.Fatal("数据库连接失败:", err) // 记录错误并终止程序
 	}
 
 	// 设置表名Handler
