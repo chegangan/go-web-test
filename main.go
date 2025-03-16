@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/fvbock/endless"
 	"go-web-test/pkg/setting"
 	"go-web-test/routers"
 	"log"
@@ -11,6 +10,8 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+
+	"github.com/fvbock/endless"
 )
 
 // @title           go-web-test API
@@ -40,7 +41,7 @@ func main() {
 	}()
 
 	// 等待中断信号以优雅地关闭服务器（设置 5 秒的超时时间）
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt)
 	<-quit
 
